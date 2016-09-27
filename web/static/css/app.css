@@ -1,1 +1,8 @@
 /* This file is for your main application css. */
+
+
+td { width: 40px; height: 40px; border: 1px solid black }
+td.bottom { border-bottom: none}
+td.top { border-top: none }
+td.left { border-left: none }
+td.right { border-right: none}
