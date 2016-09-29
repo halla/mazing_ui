@@ -1,0 +1,9 @@
+<table>
+<%= for row <- @maze do %>
+  <tr>
+  <%= for c <- row do %>
+    <td class="<%= classes_for_cell(c) %>" > x </td>
+  <%= end %>
+  </tr>
+<%= end%>
+</table>

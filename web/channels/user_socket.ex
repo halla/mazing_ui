@@ -2,7 +2,7 @@ defmodule MazingUi.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", MazingUi.RoomChannel
+  channel "maze:*", MazingUi.MazeChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

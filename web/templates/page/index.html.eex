@@ -1,12 +1,9 @@
 <div class="jumbotron">
 
-  <table>
-  <%= for row <- @maze do %>
-    <tr>
-    <%= for c <- row do %>
-      <td class="<%= classes_for_cell(c) %>" > x </td>
-    <%= end %>
-    </tr>
-  <%= end%>
-  </table>
+  <div id="maze">
+    <div id="maze-area">      
+      <%= render "maze.html", maze: @maze %>
+    </div>
+    <button id="maze-me">Maze me</button>
+  </div>
 </div>
