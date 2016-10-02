@@ -21,5 +21,5 @@ import "phoenix_html"
 import socket from "./socket"
 import Maze from "./maze"
 
-maze = document.getElementById("maze")
+maze = document.getElementById("maze-area")
 Maze.init(socket, maze)

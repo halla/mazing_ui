@@ -10,12 +10,9 @@ defmodule MazingUi.MazeChannel do
   end
 
   def handle_in("maze-me", _params, socket) do
-    maze =
-      Graph.square_grid(7)
-      |> Maze.binary_tree()
-      |> Graph.as_grid()
-
-    html = View.render_to_string PageView, "maze.html", maze: maze    
+    maze = Maze.generate_maze(:maze_server, 7)
+      
+    html = View.render_to_string PageView, "maze.html", maze: maze
     broadcast! socket, "new_maze", %{html: html}
     {:reply, :ok, socket}
 
