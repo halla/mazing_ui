@@ -35,6 +35,7 @@ defmodule MazingUi.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:mazing, path: "../mazing"},
+     {:ex_doc, "~> 0.14", only: :dev},
     ]
   end
 end

@@ -1,5 +1,8 @@
 # MazingUi
 
+Depends on Mazing -project -- expects it to be installed in the same parent directory.
+
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`

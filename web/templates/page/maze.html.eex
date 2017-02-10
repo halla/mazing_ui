@@ -1,8 +1,8 @@
 <table>
-<%= for row <- @maze do %>
+<%= for row <- rows(@maze) do %>
   <tr>
   <%= for c <- row do %>
-    <td class="<%= classes_for_cell(c) %>" > x </td>
+    <td class="<%= classes_for_cell(@maze, c) %>" > x </td>
   <%= end %>
   </tr>
 <%= end%>
