@@ -5,6 +5,7 @@ defmodule MazingUi.MazeChannel do
 
   use MazingUi.Web, :channel
   alias Mazing.Maze
+  alias Mazing.Dfs
   alias Mazing.Graph
   alias Phoenix.View
   alias MazingUi.PageView
@@ -16,7 +17,8 @@ defmodule MazingUi.MazeChannel do
 
   def handle_in("maze-me", _params, socket) do
     maze = Maze.generate_maze(:maze_server, 7)
-    html = View.render_to_string PageView, "maze.html", maze: maze
+    dfs = Dfs.dfs(maze, 1)
+    html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs
     broadcast! socket, "new_maze", %{html: html}
     {:reply, :ok, socket}
 

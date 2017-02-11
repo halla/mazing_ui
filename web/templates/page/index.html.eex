@@ -1,8 +1,9 @@
 <div class="jumbotron">
 
   <div id="maze">
-    <div id="maze-area">      
-      <%= render "maze.html", maze: @maze %>
+    <div id="maze-area">
+
+      <%= render "maze.html", maze: @maze, dfs: (if @dfs do @dfs else nil end) %>
     </div>
     <button id="maze-me">Maze me</button>
   </div>

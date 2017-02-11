@@ -2,7 +2,7 @@
 <%= for row <- rows(@maze) do %>
   <tr>
   <%= for c <- row do %>
-    <td class="<%= classes_for_cell(@maze, c) %>" > x </td>
+    <td class="<%= classes_for_cell(@maze, c) %>" > <%= if @dfs do @dfs[c] else "x"  end %> </td>
   <%= end %>
   </tr>
 <%= end%>
