@@ -1,5 +1,5 @@
 <table>
-<%= for row <- rows(@maze) do %>
+<%= for row <- rows(@maze.graph) do %>
   <tr>
   <%= for c <- row do %>
     <td class="<%= classes_for_cell(@maze, c) %>" > <%= if @dfs do @dfs[c] else "x"  end %> </td>
