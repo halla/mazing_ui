@@ -8,7 +8,9 @@ defmodule MazingUi.PageController do
     g = Graph.square_grid(7)
 
     maze = Graph.as_grid(Maze.binary_tree(g))
+
+
     dfs = nil #Dfs.dfs(maze, Enum.at(maze.nodes, 0))
-    render conn, "index.html", maze: %{graph: maze}, dfs: @dfs
+    render conn, "index.html", maze: %{graph: maze, trails: %{}}, dfs: @dfs
   end
 end
