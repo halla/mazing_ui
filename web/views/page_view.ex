@@ -14,22 +14,26 @@ defmodule MazingUi.PageView do
     "#{b} #{t} #{l} #{r}"
   end
 
+  @doc"""
+  The visual propeties of a cell are marked using css classes.
+  """
   def classes_for_cell(%Maze{} = maze, v) do
     g = maze.graph
     trs = trails(maze)
+    obs = objects(maze)
+
     t = if Grid.has_top_path(g, v) do "top" else "" end
     r = if Grid.has_right_path(g, v) do "right" else "" end
     l = if Grid.has_left_path(g, v) do "left" else "" end
     b = if Grid.has_bottom_path(g, v) do "bottom" else "" end
-    obj = "" #if v == maze.objects.monsterino do "monsterino" else "" end
-    obj2 = if v == maze.objects.randoomed do "randoomed" else "" end
-    obj3 = if v == maze.objects.straightguy do "straightguy" else "" end
 
-    obj4 = if v == Map.get(maze.objects, :green_dot, nil) do "green_dot" else "" end
+    obj_class = Map.get(obs, v, [])
+      |> Enum.map(fn x -> to_string(x) end)
+      |> Enum.join(" ")
     tr_class = Map.get(trs, v, [])
       |> Enum.map(fn x -> to_string(x) <> "-trail" end)
       |> Enum.join(" ")
-    "#{b} #{t} #{l} #{r} #{obj} #{obj2} #{obj3} #{obj4} #{tr_class}"
+    "#{b} #{t} #{l} #{r} #{obj_class} #{tr_class}"
   end
 
 
@@ -39,8 +43,25 @@ defmodule MazingUi.PageView do
 
   def rows(x), do: x
 
-  def trails(g) do
 
+  @doc"""
+    V -> objects lookup
+  """
+  def objects(m) do
+    locations = for {obj, v} <- m.objects do
+      {v, obj}
+    end
+    cells = Enum.reduce locations, %{}, fn({v, obj}, acc) ->
+      xs = Map.get(acc, v, [])
+      xs = xs ++ [obj]
+      put_in acc[v], xs
+    end
+  end
+
+  @doc"""
+   V -> trail lookup
+  """
+  def trails(g) do
     marks = for {obj, trail} <- g.trails do
         for c <- :queue.to_list(trail) do
           {c, obj}
