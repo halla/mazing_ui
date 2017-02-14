@@ -21,7 +21,9 @@ defmodule MazingUi.PageView do
     l = if Grid.has_left_path(g, v) do "left" else "" end
     b = if Grid.has_bottom_path(g, v) do "bottom" else "" end
     obj = if v == maze.objects.monsterino do "monsterino" else "" end
-    "#{b} #{t} #{l} #{r} #{obj}"
+    obj2 = if v == maze.objects.randoomed do "randoomed" else "" end
+
+    "#{b} #{t} #{l} #{r} #{obj} #{obj2}"
   end
 
 

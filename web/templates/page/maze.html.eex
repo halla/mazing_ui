@@ -2,7 +2,9 @@
 <%= for row <- rows(@maze.graph) do %>
   <tr>
   <%= for c <- row do %>
-    <td class="<%= classes_for_cell(@maze, c) %>" > <%= if @dfs do @dfs[c] else "x"  end %> </td>
+    <td class="<%= classes_for_cell(@maze, c) %>" >
+      <div class="cell-inner"><%= if @dfs do @dfs[c] else "x"  end %> </div>
+    </td>
   <%= end %>
   </tr>
 <%= end%>
