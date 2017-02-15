@@ -1,16 +1,16 @@
 <table class="base-layer">
-<%= for row <- rows(@maze.graph) do %>
-  <tr>
-  <%= for c <- row do %>
-    <td class="<%= classes_for_cell(@maze, c) %>" >
-      <div class="cell-inner "><%= if @dfs do @dfs[c] else "x"  end %> </div>
-    </td>
-  <%= end %>
-  </tr>
-<%= end%>
+<%= if @maze do %>
+  <%= for row <- rows(@maze.graph) do %>
+    <tr>
+    <%= for c <- row do %>
+      <td class="<%= classes_for_cell(@maze, c) %>" >
+        <div class="cell-inner ">
+          <%= #if @dfs do @dfs[c] else c  end %>
+          <%= c %>
+        </div>
+      </td>
+    <%= end %>
+    </tr>
+  <%= end%>
+<%= end %>
 </table>
-<div class="trails-layer">
-  <table>
-    <%= #trails(@maze) %>
-  </table>
-</div>

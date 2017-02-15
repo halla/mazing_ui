@@ -5,12 +5,10 @@ defmodule MazingUi.PageController do
   alias Mazing.Dfs
 
   def index(conn, _params) do
-    g = Graph.square_grid(7)
-
-    maze = Graph.as_grid(Maze.binary_tree(g))
+    maze = %{graph: [], trails: %{}, objects: %{}}
 
 
     dfs = nil #Dfs.dfs(maze, Enum.at(maze.nodes, 0))
-    render conn, "index.html", maze: %{graph: maze, trails: %{}}, dfs: @dfs
+    render conn, "index.html", maze: nil, dfs: @dfs
   end
 end
