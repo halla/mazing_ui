@@ -7,8 +7,9 @@ defmodule MazingUi.PageController do
   def index(conn, _params) do
     maze = %{graph: [], trails: %{}, objects: %{}}
 
+    generators = Mazing.Generator.list_generators()
 
     dfs = nil #Dfs.dfs(maze, Enum.at(maze.nodes, 0))
-    render conn, "index.html", maze: nil, dfs: @dfs
+    render conn, "index.html", maze: nil, dfs: @dfs, generators: generators
   end
 end

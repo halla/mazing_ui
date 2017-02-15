@@ -9,7 +9,8 @@ let Maze = {
 
     let btn = document.getElementById("maze-me");
     btn.addEventListener("click", function(e) {
-      channel.push("maze-me");
+      let generator_selector = document.getElementById("generator-selector");      
+      channel.push("maze-me", { generator: generator_selector.value });
     });
 
     channel.on("new_maze", (resp) => {

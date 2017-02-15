@@ -19,8 +19,8 @@ defmodule MazingUi.MazeChannel do
   @doc """
   Generate a new maze.
   """
-  def handle_in("maze-me", _params, socket) do
-    maze = Maze.generate_maze(:maze_server, 7)
+  def handle_in("maze-me", %{ "generator" => generator }, socket) do    
+    maze = Maze.generate_maze(:maze_server, String.to_atom(generator), 7)
     dfs = Dfs.dfs(maze.graph, 1)
 
     html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs
