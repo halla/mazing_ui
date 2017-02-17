@@ -6,6 +6,7 @@ defmodule MazingUi.MazeChannel do
   use MazingUi.Web, :channel
   alias Mazing.Maze
   alias Mazing.Dfs
+  alias Mazing.Traverse.Bfs
   alias Mazing.Graph
   alias Phoenix.View
   alias MazingUi.PageView
@@ -19,8 +20,12 @@ defmodule MazingUi.MazeChannel do
   @doc """
   Generate a new maze.
   """
-  def handle_in("maze-me", %{ "generator" => generator }, socket) do    
-    maze = Maze.generate_maze(:maze_server, String.to_atom(generator), 7)
+  def handle_in("maze-me", %{ "generator" => generator }, socket) do
+    options = %{
+      generator: String.to_atom(generator),
+      size: 9
+    }
+    maze = Maze.generate_maze(:maze_server, options)
     dfs = Dfs.dfs(maze.graph, 1)
 
     html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs
@@ -34,9 +39,9 @@ defmodule MazingUi.MazeChannel do
   def handle_info(:refresh, socket) do
     maze = Maze.get_maze(:maze_server)
     dfs = Dfs.dfs(maze.graph, 1)
-
-    html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs
-    broadcast! socket, "new_maze", %{html: html}
+    bfs = Bfs.traverse(maze.graph, 1)
+    html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs, bfs: bfs
+    broadcast! socket, "new_maze", %{html: html }
     {:noreply, socket}
   end
 end

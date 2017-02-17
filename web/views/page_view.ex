@@ -44,7 +44,7 @@ defmodule MazingUi.PageView do
   def rows(x), do: x
 
 
-  @doc"""
+  @doc """
     V -> objects lookup
   """
   def objects(m) do
@@ -58,7 +58,7 @@ defmodule MazingUi.PageView do
     end
   end
 
-  @doc"""
+  @doc """
    V -> trail lookup
   """
   def trails(g) do
@@ -73,5 +73,9 @@ defmodule MazingUi.PageView do
       xs = xs ++ [obj]
       put_in acc[v], xs
     end
+  end
+
+  def cell_content(maze, c, dfs, bfs) do
+    bfs[c]
   end
 end

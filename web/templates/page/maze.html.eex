@@ -4,9 +4,8 @@
     <tr>
     <%= for c <- row do %>
       <td class="<%= classes_for_cell(@maze, c) %>" >
-        <div class="cell-inner ">
-          <%= #if @dfs do @dfs[c] else c  end %>
-          <%= c %>
+        <div class="cell-inner ">        
+          <%= cell_content(@maze, c, @dfs, @bfs) %>
         </div>
       </td>
     <%= end %>
