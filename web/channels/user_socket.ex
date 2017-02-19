@@ -3,7 +3,8 @@ defmodule MazingUi.UserSocket do
 
   ## Channels
   channel "maze:*", MazingUi.MazeChannel
-
+  channel "agent:*", MazingUi.AgentChannel
+  
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
   # transport :longpoll, Phoenix.Transports.LongPoll

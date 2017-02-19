@@ -20,6 +20,10 @@ import "phoenix_html"
 
 import socket from "./socket"
 import Maze from "./maze"
+import Agent from "./agent"
 
-maze = document.getElementById("maze-area")
+const maze = document.getElementById("maze-area")
 Maze.init(socket, maze)
+
+const agent = document.getElementById("agent-area")
+Agent.init(socket, agent)

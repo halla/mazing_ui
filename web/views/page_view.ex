@@ -76,6 +76,9 @@ defmodule MazingUi.PageView do
   end
 
   def cell_content(maze, c, dfs, bfs) do
-    bfs[c]
+    if bfs do
+      {dists , prevs} = bfs
+      "#{dists[c]} - #{prevs[c]}"
+    end
   end
 end

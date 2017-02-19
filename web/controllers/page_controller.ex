@@ -10,6 +10,6 @@ defmodule MazingUi.PageController do
     generators = Mazing.Generator.list_generators()
 
     dfs = nil #Dfs.dfs(maze, Enum.at(maze.nodes, 0))
-    render conn, "index.html", maze: nil, dfs: dfs, bfs: nil, generators: generators
+    render conn, "index.html", maze: maze, dfs: dfs, bfs: nil, objects: nil, generators: generators
   end
 end

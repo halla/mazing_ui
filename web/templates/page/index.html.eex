@@ -1,15 +1,24 @@
 <div class="jumbotron">
+  <div class="row">
 
-  <div id="maze">
-    <div id="maze-area">
-      <%= render "maze.html", maze: @maze, dfs: (if @dfs do @dfs else nil end) %>
+    <div class="col-md-8">
+      <div id="maze">
+        <div id="maze-area">
+          <%= render "maze.html", maze: @maze, dfs: (if @dfs do @dfs else nil end) %>
+        </div>
+      </div>
+
+      <button id="maze-me">Maze me</button>
+      <select id="generator-selector">
+        <%= for g <- @generators  do %>
+          <option value="<%= g.code %>"> <%= g.title %> </option>
+        <%= end %>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <div id="agent-area" class="agent-view">
+        <%= render "agent_view.html", name: "Unknown", info: "no info." %>
+      </div>
     </div>
   </div>
-
-  <button id="maze-me">Maze me</button>
-  <select id="generator-selector">
-    <%= for g <- @generators  do %>
-      <option value="<%= g.code %>"> <%= g.title %> </option>
-    <%= end %>
-  </select>
 </div>
