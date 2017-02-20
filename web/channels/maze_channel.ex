@@ -8,6 +8,7 @@ defmodule MazingUi.MazeChannel do
   alias Mazing.Dfs
   alias Mazing.Traverse.Bfs
   alias Mazing.Graph
+  alias Mazing.Digraph
   alias Phoenix.View
   alias MazingUi.PageView
 
@@ -39,7 +40,7 @@ defmodule MazingUi.MazeChannel do
   def handle_info(:refresh, socket) do
     maze = Maze.get_maze(:maze_server)
     dfs = Dfs.dfs(maze.graph, 1)
-    bfs = Bfs.traverse(maze.graph, 1)
+    bfs = Bfs.traverse(maze.graph, div(Digraph.v(maze.graph), 2))
     html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs, bfs: bfs
     broadcast! socket, "new_maze", %{html: html }
     {:noreply, socket}

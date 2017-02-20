@@ -81,4 +81,10 @@ defmodule MazingUi.PageView do
       "#{dists[c]} - #{prevs[c]}"
     end
   end
+
+  def cell_color({distances, _} = bfs, cell) do
+    max_dist = Enum.max(Map.values(distances))
+    alpha = distances[cell] / max_dist
+    "background: rgba(200,200,200, #{alpha})"
+  end
 end

@@ -1,7 +1,7 @@
 /* This file is for your main application css. */
 .container { max-width: 1000px; }
 
-td {  border-spacing: 2px; border-collapse: separate; padding: 1px; width: 60px; height: 60px; border: 1px solid black; vertical-align: center;}
+td {  border-spacing: 2px; border-collapse: separate; padding: 1px; width: 60px; height: 60px; border: 6px solid black; vertical-align: center;}
 td.bottom { border-bottom: none}
 td.top { border-top: none }
 td.left { border-left: none }
@@ -18,3 +18,4 @@ td.green_dot .cell-inner { background-color: darkgreen }
 
 .cell-id { position: absolute; left: 0; top: 0; color: #aaa; font-size: 0.8em; }
 .cell-info { color: #555; font-size: 0.9em; padding-top: 0.4em; margin-top: 1em; display: inline-block; }
+.cell-bg { position: absolute; height: 100%; width: 100%}

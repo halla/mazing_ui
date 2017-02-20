@@ -1,4 +1,5 @@
-<div class="cell-inner ">
+<div class="cell-inner" >
+  <div class="cell-bg" style="<%= cell_color(@bfs, @cell) %>" </div>
   <div class="cell-id"><%= @cell %></div>
   <span class="cell-info">
     <%= cell_content(@maze, @cell, @dfs, @bfs) %>
