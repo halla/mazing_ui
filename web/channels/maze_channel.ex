@@ -28,9 +28,15 @@ defmodule MazingUi.MazeChannel do
     }
     maze = Maze.generate_maze(:maze_server, options)
     dfs = Dfs.dfs(maze.graph, 1)
-
-    html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs
+    start_cell = Map.get socket.assigns, :cell, 2    
+    bfs = Bfs.traverse(maze.graph, start_cell)
+    html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs, bfs: bfs
     broadcast! socket, "new_maze", %{html: html}
+    {:reply, :ok, socket}
+  end
+
+  def handle_in("set-start-cell", cell, socket) do
+    socket = put_in socket.assigns[:cell], String.to_integer(cell)
     {:reply, :ok, socket}
   end
 
@@ -40,7 +46,8 @@ defmodule MazingUi.MazeChannel do
   def handle_info(:refresh, socket) do
     maze = Maze.get_maze(:maze_server)
     dfs = Dfs.dfs(maze.graph, 1)
-    bfs = Bfs.traverse(maze.graph, div(Digraph.v(maze.graph), 2))
+    start_cell = Map.get socket.assigns, :cell, 2
+    bfs = Bfs.traverse(maze.graph, start_cell)
     html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs, bfs: bfs
     broadcast! socket, "new_maze", %{html: html }
     {:noreply, socket}
