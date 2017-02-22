@@ -14,7 +14,8 @@ defmodule MazingUi do
       # worker(MazingUi.Worker, [arg1, arg2, arg3]),
       #worker(Mazing.Maze, [])
       worker(Mazing.Agent.Randoomed, []),
-      worker(Mazing.Agent.Straightguy, [])
+      worker(Mazing.Agent.Straightguy, []),
+      worker(Mazing.Agent.Avatar, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

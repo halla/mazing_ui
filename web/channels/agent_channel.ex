@@ -16,4 +16,9 @@ defmodule MazingUi.AgentChannel do
     broadcast! socket, "agent_info", %{html: html }
     {:noreply, socket}
   end
+
+  def handle_in("move", %{"direction" => direction}, socket) do
+    Mazing.Agent.Avatar.move(String.to_atom(direction))
+    {:reply, :ok, socket}
+  end
 end

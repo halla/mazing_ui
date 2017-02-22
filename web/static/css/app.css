@@ -1,6 +1,8 @@
 /* This file is for your main application css. */
 .container { max-width: 1000px; }
 
+body { max-height: 100vh; margin: 0; padding: 0 }
+
 td {  border-spacing: 2px; border-collapse: separate; padding: 1px; width: 60px; height: 60px; border: 6px solid black; vertical-align: center;}
 td.bottom { border-bottom: none}
 td.top { border-top: none }
@@ -11,10 +13,12 @@ td.monsterino .cell-inner { background-color: red}
 td.randoomed-trail .cell-inner { background-color: lightblue; }
 td.straightguy-trail .cell-inner { background-color: lightgreen }
 td.randoomed .cell-inner { background-color: blue }
+td.avatar .cell-inner { background-color: darkblue }
 
 td.straightguy .cell-inner { background-color: green }
 td.green_dot .cell-inner { background-color: darkgreen }
 
+table#move-controls td { border: none; }
 .cell-inner { cursor: pointer; }
 a.cell-anchor { position: absolute; height: 100%; width: 100%; left: 0; top: 0;  }
 a.cell-anchor:hover { z-index: 10; background-color: rgba(100,123,211, 0.2)}
