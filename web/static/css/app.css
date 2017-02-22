@@ -16,6 +16,8 @@ td.straightguy .cell-inner { background-color: green }
 td.green_dot .cell-inner { background-color: darkgreen }
 
 .cell-inner { cursor: pointer; }
+a.cell-anchor { position: absolute; height: 100%; width: 100%; left: 0; top: 0;  }
+a.cell-anchor:hover { z-index: 10; background-color: rgba(100,123,211, 0.2)}
 .cell-id { position: absolute; left: 0; top: 0; color: #aaa; font-size: 0.8em; }
 .cell-info { color: #555; font-size: 0.9em; padding-top: 0.4em; margin-top: 1em; display: inline-block; }
 .cell-bg { position: absolute; height: 100%; width: 100%}
