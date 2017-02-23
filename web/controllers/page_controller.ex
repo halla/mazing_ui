@@ -12,4 +12,8 @@ defmodule MazingUi.PageController do
     dfs = nil #Dfs.dfs(maze, Enum.at(maze.nodes, 0))
     render conn, "index.html", maze: maze, dfs: dfs, bfs: nil, objects: nil, generators: generators
   end
+
+  def avatar_local(conn, _params) do
+    render conn, "avatar_local.html"
+  end
 end

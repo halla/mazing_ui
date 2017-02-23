@@ -11,7 +11,7 @@ defmodule MazingUi.AgentChannel do
 
 
   def handle_info(:refresh, socket) do
-    info = Mazing.Agent.Straightguy.agent_info()
+    info = Mazing.Agent.Avatar.agent_info()
     html = View.render_to_string(PageView, "agent_view.html", name: "Straightguy", info: info)
     broadcast! socket, "agent_info", %{html: html }
     {:noreply, socket}
