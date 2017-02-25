@@ -56,6 +56,7 @@ defmodule MazingUi.PageView do
       xs = xs ++ [obj]
       put_in acc[v], xs
     end
+    cells
   end
 
   @doc """
@@ -73,16 +74,17 @@ defmodule MazingUi.PageView do
       xs = xs ++ [obj]
       put_in acc[v], xs
     end
+    cells
   end
 
-  def cell_content(maze, c, dfs, bfs) do
+  def cell_content(_maze, c, _dfs, bfs) do
     if bfs do
       {dists , prevs} = bfs
       "#{dists[c]} - #{prevs[c]}"
     end
   end
 
-  def cell_color({distances, _} = bfs, cell) do
+  def cell_color({distances, _} = _bfs, cell) do
     max_dist = Enum.max(Map.values(distances))
     alpha = distances[cell] / max_dist
     "background: rgba(200,200,200, #{alpha})"

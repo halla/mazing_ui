@@ -1,8 +1,5 @@
 defmodule MazingUi.PageController do
   use MazingUi.Web, :controller
-  alias Mazing.Maze
-  alias Mazing.Graph
-  alias Mazing.Dfs
 
   def index(conn, _params) do
     maze = %{graph: [], trails: %{}, objects: %{}}
