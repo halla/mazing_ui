@@ -80,7 +80,8 @@ defmodule MazingUi.PageView do
   def cell_content(_maze, c, _dfs, bfs) do
     if bfs do
       {dists , prevs} = bfs
-      "#{dists[c]} - #{prevs[c]}"
+      # TODO select type of content, eg #{prevs[c]}
+      "#{dists[c]}"
     end
   end
 

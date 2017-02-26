@@ -12,11 +12,12 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="containe">
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li> </li>
+            <li><a href="/">Overview</a></li>
+            <li><a href="/avatar_local">Avatar</a></li>
           </ul>
         </nav>
         <h1>Mazing</h1>

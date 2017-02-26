@@ -13,7 +13,7 @@ defmodule MazingUi.MazeChannel do
   alias MazingUi.PageView
 
   def join("maze:1", _params, socket) do
-    :timer.send_interval(1000, :refresh)
+    :timer.send_interval(100, :refresh)
     {:ok, socket}
   end
 
@@ -28,13 +28,16 @@ defmodule MazingUi.MazeChannel do
     }
     maze = Maze.generate_maze(:maze_server, options)
     dfs = Dfs.dfs(maze.graph, 1)
-    start_cell = Map.get socket.assigns, :cell, 2    
+    start_cell = Map.get socket.assigns, :cell, 2
     bfs = Bfs.traverse(maze.graph, start_cell)
     html = View.render_to_string PageView, "maze.html", maze: maze, dfs: dfs, bfs: bfs
     broadcast! socket, "new_maze", %{html: html}
     {:reply, :ok, socket}
   end
 
+  @doc """
+  Set start cell. Bfs is calculated from here. Store start cell in socket.
+  """
   def handle_in("set-start-cell", cell, socket) do
     socket = put_in socket.assigns[:cell], String.to_integer(cell)
     {:reply, :ok, socket}
