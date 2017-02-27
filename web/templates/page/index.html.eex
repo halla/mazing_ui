@@ -13,6 +13,18 @@
         <%= end %>
       </select>
       <button id="maze-me">Maze me</button>
+      <br>
+      Object:
+      <select id="object-selector">
+        <%= for {code, _pos} <- @objects do %>
+          <option value="<%= code %>"> <%= code %> </options>
+        <%= end %>
+      </select>
+      <div class="info-text">
+        The controls in this column are set once on page load time.
+        They can change the server state (eg. maze structure) or
+        channel state (eg. which agent info is updated).
+      </div>
     </nav>
 
     <aside class="details">

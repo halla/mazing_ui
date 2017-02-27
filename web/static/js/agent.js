@@ -11,6 +11,12 @@ let Agent = {
       element.innerHTML = resp.html;
     });
 
+    let agent_selector = document.getElementById("object-selector");
+    agent_selector.addEventListener("change", function(e) {
+      channel.push("set_active_agent", { agent: agent_selector.value });
+    });
+
+
     document.getElementById('move-up').addEventListener('click', (e) => {
       channel.push("move", { direction: "up" });
     });
@@ -23,7 +29,7 @@ let Agent = {
     document.getElementById('move-right').addEventListener('click', (e) => {
       channel.push("move", { direction: "right" });
     });
-    document.onkeydown = function(e) {  
+    document.onkeydown = function(e) {
       switch(e.which) {
         case 37: // left
         channel.push("move", { direction: "left" });
